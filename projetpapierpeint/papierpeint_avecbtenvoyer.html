@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <style>
+        div {
+            display: inline-table;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <fieldset>
+
+            <legend>Dimensions des murs</legend>
+            <p> Mur1 </p>
+
+
+            <label>hauteur</label> <br>
+            <input type="number" name="height_M">
+
+            </div>
+
+            <div>
+                <label>profondeur</label> <br>
+                <input type="number" name="depth_M">
+            </div>
+            <div>
+                <label>resultat</label> <br>
+                <input type="text" name="result_M" readonly>
+            </div>
+        </fieldset>
+
+        <fieldset>
+
+            <legend>Dimensions des fenetres </legend>
+            <p> fenetre1 </p>
+            <div>
+                <label> hauteur</label> <br>
+                <input type="number" name="height_F">
+            </div>
+
+            <div>
+                <label>profondeur</label> <br>
+                <input type="number" name="depth_F">
+            </div>
+            <div>
+                <label>resultat</label> <br>
+                <input type="text" name="result_F" readonly>
+            </div>
+        </fieldset>
+        <fieldset>
+
+            <legend> Dimensions des portes </legend>
+            <p> Porte1 </p>
+            <div>
+                <label> hauteur</label> <br>
+                <input type="number" name="height_P">
+            </div>
+
+            <div>
+                <label>profondeur</label> <br>
+                <input type="number" name="depth_P">
+            </div>
+            <div>
+                <label>resultat</label> <br>
+                <input type="text" name="result_P" readonly>
+            </div>
+        </fieldset>
+        <fieldset>
+
+            <legend>Dimensions du papier rouleau</legend>
+            <p> Mur1 </p>
+            <div>
+                <label> hauteur</label> <br>
+                <input type="number" name="height_R">
+            </div>
+
+            <div>
+                <label>profondeur</label> <br>
+                <input type="number" name="depth_R">
+            </div>
+        </fieldset>
+        <button onclick="multiplier()"> calculer </button>
+    </form>
+
+    <script>
+        // var form=document.frm)
+
+
+
+
+        // todo
+
+        function multiplier() {
+            //récupérer tous les champs de valeur et de résultat 
+            const heihgtschamp = document.getElementsByName("height");
+            const depthschamp = document.getElementsByName("depth");
+            const resultschamp = document.getElementsByName("result");
+
+            //parcourir toutes les paires de champs (un par un )  et calculer leurs produits
+            for (let i = 0; i < heihgts.length; i++) {
+                const height = parseFloat(heihgtschamp[i].value);
+                const depth = parseFloat(depthschamp[i].value);
+                const resultat = height * depth;
+
+                resultschamp[i].value = resultat;
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
