@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <style>
+        div {
+            display: inline-table;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="" method="get" name="frmdim" onsubmit="return surface()">
+        <fieldset>
+
+            <legend> Dimensions des murs
+            </legend>
+            <p> Mur1 </p>
+            <div>
+                <label> hauteur</label> <br>
+                <input class="frmdim-control required" type="number" name="Mheight">
+
+            </div>
+
+            <div>
+                <label>profondeur</label> <br>
+                <input class="frmdim-control required" type="number" name="Mdepth">
+            </div>
+            <div>
+                <label></label> <br>
+                <input type="submit" value="0">
+            </div>
+        </fieldset>
+
+        <fieldset>
+
+            <legend> Dimensions des fenetres
+            </legend>
+            <p> fenetre1 </p>
+            <div>
+                <label> hauteur</label> <br>
+                <input class="frmdim-control required" type="number" name="Fheight">
+            </div>
+
+            <div>
+                <label>profondeur</label> <br>
+                <input class="frmdim-control required" type="number" name="Fdepth">
+            </div>
+        </fieldset>
+        <fieldset>
+
+            <legend> Dimensions des portes
+            </legend>
+            <p> Porte1 </p>
+            <div>
+                <label> hauteur</label> <br>
+                <input type="number" name="Pheight">
+            </div>
+
+            <div>
+                <label>profondeur</label> <br>
+                <input type="number" name="Pdepth">
+            </div>
+        </fieldset>
+        <fieldset>
+
+            <legend> Dimensions du papier rouleau
+            </legend>
+            <p> Mur1 </p>
+            <div>
+                <label> hauteur</label> <br>
+                <input type="number" name="Rheight">
+            </div>
+
+            <div>
+                <label>profondeur</label> <br>
+                <input type="number" name="Rdepth">
+            </div>
+        </fieldset>
+
+    </form>
+
+    <script>
+        // var form=document.frm)
+
+        // selection
+        let frm = document.forms['frmdim'];
+        let Mhauteur = document.frm.elements["Mheight"]; // vt mieux separer les lectures des selections
+        let Mprof = document.frm.elements["Mdepth"];
+
+        let Fhauteur = document.frm.elements["Fheight"];
+        let Fprof = document.frm.elements["Fdepth"];
+
+        let Phauteur = document.frm.elements["Pheight"];
+        let Pprof = document.frm.elements["Fdepth"];
+
+        let Rhauteur = document.frm.elements["Rheight"];
+        let Rprof = document.frm.elements["Rdepth"];
+
+
+        // lecture et calcul
+        let surfacemur = Mhauteur.value * Mprof.value;
+        let surfacefenetre = Fhauteur.value * Fprof.value;
+
+        let surfaceporte = Phauteur.value * Pprof.value;
+        let surfacerouleau = Rhauteur.value * Rprof.value;
+
+
+
+        onmouseover.depth = function surface(width, depth) {
+            if (frm.elements['prenom'].value != "") {
+                return true;
+            }
+
+            let resultat = width.depth;
+            return resultat;
+        }
+
+
+    </script>
+</body>
+
+</html>
