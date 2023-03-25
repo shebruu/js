@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <style>
+        div {
+            display: inline-table;
+
+        }
+
+        span {}
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <fieldset>
+
+            <legend>Dimensions des murs</legend>
+            <p> Mur1 </p>
+
+            <div>
+                <label>hauteur</label> <br>
+                <input type="text" id="height" onchange="multiplier()" placeholder="m"> <span>m</span>
+
+            </div>
+
+            <div>
+                <label>profondeur</label> <br>
+                <input type="text" id="depth" onchange="multiplier()" placeholder="m"> <span>m</span>
+            </div>
+
+            <div>
+
+                <input type="text" id="result">
+                <span>m2</span>
+            </div>
+        </fieldset>
+    </form>
+
+    <script>
+        // var form=document.frm)
+
+
+
+
+        // todo
+
+        function multiplier() {
+            var height = parseFloat(document.getElementById("height").value);
+            var depth = parseFloat(document.getElementById("depth").value);
+
+            if (height != "" && depth != "") {
+                // arrondir a 2 chiffres apres la virgule.
+                var result = (height * depth).toFixed(2);
+                document.getElementById("result").value = result;
+            }
+
+
+        }
+
+    </script>
+</body>
+
+</html>
