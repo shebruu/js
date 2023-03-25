@@ -15,26 +15,41 @@
 
 <body>
 
-    <form action="" method="get" name="frmdim" onsubmit="return surface()">
+    <form action="" method="get" name="frmdim">
         <fieldset>
 
             <legend> Dimensions des murs
             </legend>
             <p> Mur1 </p>
+
             <div>
                 <label> hauteur</label> <br>
-                <input class="frmdim-control required" type="number" name="Mheight">
+                <input type="number" name="Mheight" oninput="multiplier()">
 
             </div>
 
             <div>
                 <label>profondeur</label> <br>
-                <input class="frmdim-control required" type="number" name="Mdepth">
+                <input type="number" name="Mdepth" oninput="multiplier()">
             </div>
-            <div>
-                <label></label> <br>
-                <input type="submit" value="0">
+            <label>result </label>
+            <input type="submit" name="result" readonly>
             </div>
+
+        </fieldset>
+        <label> hauteur</label> <br>
+        <input class="frmdim-control required" type="number" name="Mheight">
+
+        </div>
+
+        <div>
+            <label>profondeur</label> <br>
+            <input class="frmdim-control required" type="number" name="Mdepth">
+        </div>
+        <div>
+            <label></label> <br>
+            <input type="submit" value="0">
+        </div>
         </fieldset>
 
         <fieldset>
@@ -112,15 +127,15 @@
 
 
 
-        onmouseover.depth = function surface(width, depth) {
-            if (frm.elements['prenom'].value != "") {
-                return true;
-            }
+        // todo
 
-            let resultat = width.depth;
-            return resultat;
+        function multiplier() {
+            let frm = document.forms['frmdim'];
+            let Mhauteur = document.frm.elements["Mheight"]; // vt mieux separer les lectures des selections
+            let Mprof = document.frm.elements["Mdepth"];
+            var result = Mhauteur.value * Mprof.value;
+            document.getElementById("result").value = result;
         }
-
 
     </script>
 </body>
