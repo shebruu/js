@@ -8,10 +8,17 @@
     <style>
         div {
             display: inline-table;
+            padding: 5px;
+            margin: 6px;
 
         }
 
-        span {}
+        .encadrer {
+            border: 1px double silver;
+            background-color: silver;
+
+            padding: 1px;
+        }
     </style>
 </head>
 
@@ -25,20 +32,76 @@
 
             <div>
                 <label>hauteur</label> <br>
-                <input type="text" id="height" onchange="multiplier()" placeholder="m"> <span>m</span>
+                <span class="encadrer"><input type="text" name="height_1" onchange="multiplier()"> m </span>
+
+
 
             </div>
 
             <div>
                 <label>profondeur</label> <br>
-                <input type="text" id="depth" onchange="multiplier()" placeholder="m"> <span>m</span>
+                <span class="encadrer"> <input type="text" name="depth_1" onchange="multiplier()"> m
+                </span>
+            </div>
+
+
+            <div>
+                <br>
+                <span class="encadrer"><input type="text" name="result_1"> m2</span>
+
+            </div>
+
+            <!---
+            <legend>Dimensions des fenetres</legend>
+            <p> Fenetre 1 </p>
+
+            <div>
+                <label>hauteur</label> <br>
+                <span class="encadrer"><input type="text" name="height_2" onsunm="multiplier()"> m </span>
+
+
+
             </div>
 
             <div>
-
-                <input type="text" id="result">
-                <span>m2</span>
+                <label>profondeur</label> <br>
+                <span class="encadrer"> <input type="text" name="depth_2" onsubmit="multiplier()"> m
+                </span>
             </div>
+
+
+            <div>
+                <br>
+                <span class="encadrer"><input type="text" name="result_2"> m</span>
+
+            </div>
+
+
+            <legend>Dimensions des murs</legend>
+            <p> Porte1 </p>
+
+            <div>
+                <label>hauteur</label> <br>
+                <span class="encadrer"><input type="text" name="height_3" onsubmit="multiplier()"> m </span>
+
+
+
+            </div>
+
+            <div>
+                <label>profondeur</label> <br>
+                <span class="encadrer"> <input type="text" name="depth_3" onsubmit="multiplier()"> m
+                </span>
+            </div>
+
+
+            <div>
+                <br>
+                <span class="encadrer"><input type="text" name="result_3"> m</span>
+
+            </div>
+            -->
+
         </fieldset>
     </form>
 
@@ -51,15 +114,33 @@
         // todo
 
         function multiplier() {
-            var height = parseFloat(document.getElementById("height").value);
-            var depth = parseFloat(document.getElementById("depth").value);
+            /*
+            var height = parseFloat(document.getElementByname("height").value);
+            var depth = parseFloat(document.getElementByname("depth").value);
 
             if (height != "" && depth != "") {
                 // arrondir a 2 chiffres apres la virgule.
                 var result = (height * depth).toFixed(2);
-                document.getElementById("result").value = result;
-            }
+                document.getElementByname("result").value = result;
+            }*/
 
+            const heihgtschamp = document.getElementsByName("height");
+            const depthschamp = document.getElementsByName("depth");
+
+
+            if (heihgtschamp != "" && depthschamp != "") {
+                // arrondir a 2 chiffres apres la virgule.
+
+                //   document.getElementByname("result").value = result;
+                for (let i = 0; i < heihgtschamp.length; i++) {
+                    var height = parseFloat(heihgtschamp[i].value);
+                    var depth = parseFloat(depthschamp[i].value);
+                    var resultat = (height * depth).toFixed(2);
+
+
+                    document.getElementByname("result")[i].value = resultat;
+                }
+            }
 
         }
 
