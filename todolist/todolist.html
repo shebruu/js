@@ -17,6 +17,22 @@
 
         }
 
+        #btdelete {
+
+            float: inline-end;
+            border: none;
+
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /*  qd on met le curseur sur la croix*/
+        #btdelete:hover {
+            background-color: red;
+
+        }
+
+
 
         header {
             color: silver;
@@ -29,7 +45,7 @@
 
         }
 
-        #addtache {
+        #champTxt {
 
             width: 70%;
             padding: 10px;
@@ -42,9 +58,29 @@
 
         ul li {
             position: relative;
-            border: double;
+            border: none;
             list-style-type: none;
             padding: 8px 3px 20px;
+            cursor: pointer;
+        }
+
+
+
+        /* plus foncé qd on place la souris dessus*/
+        ul li:hover {
+            background-color: silver;
+        }
+
+        /*  changement de couleur et barré qd on clique dessus */
+        ul li.checked {
+            background-color: yellowgreen;
+            text-decoration: line-through;
+        }
+
+        ul li.verifie {
+            background-color: greenyellow;
+            text-decoration: line-through;
+
         }
     </style>
 </head>
@@ -55,9 +91,10 @@
     <div>
 
 
-        <input type="text" id="addtache" placeholder="Entrez une tache ...">
+        <input type="text" id="champTxt" placeholder="Entrez une tache ...">
 
         <button id="btAdd"> Ajouter</button> <br>
+
     </div>
 
 
@@ -66,14 +103,46 @@
 
 <body>
     <table>
-        <ul>
-            <li>ApprendreHTML</li>
-            <li>Pratiquer CSS</li>
-            <li>Programmer avec js</li>
+        <ul id="todolist">
+            <li>ApprendreHTML <button id="btdelete">x</button></li>
+            <li>Pratiquer CSS<button id="btdelete">x</button></li>
+            <li>Programmer avec js<button id="btdelete">x</button></li>
 
         </ul>
     </table>
+    <script>
+        //selectionner, recuperer
+        var btAdd = document.getElementById("btAdd");
+        var todoList = document.getElementById("todolist");
 
+        btAdd.addEventListener("click", function () { // qd on clique sur le bouton, la fct est appelé
+            var champTxt = document.getElementById("champTxt").value;
+            var nouvelleLigne = document.createElement("li"); // crée une nouvelle lg
+            nouvelleLigne.textContent = champTxt; //cree le contenu du champ saisi 
+
+
+            todoList.appendChild(nouvelleLigne); // ajoute l element a la fin de la liste li  
+            document.getElementById("champTxt").value = "";
+        });
+
+        // qd on clique sur un élément de la liste, fct est appelée
+
+        todolist.addEventListener("click", function (e) {
+            if (e.target && e.target.nodeName == "LI") { //on vérifie que l' élément cliqué est un li 
+                e.target.classList.toggle("verifie");
+            }
+        });
+
+        var btdelete = document.getElementById("btdelete");
+
+        btdelete.addEventListener("click", function () {
+            var selection = document.createElement("li");
+
+
+        }
+
+        );
+    </script>
 </body>
 
 </html>
