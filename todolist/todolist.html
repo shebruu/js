@@ -7,27 +7,21 @@
     <title>to do list </title>
     <style>
         #btAdd {
-            background-color: silver;
+
             width: 15%;
-            padding: 10px;
-
             text-align: center;
-
-            float: left;
-
+            background-color: silver;
         }
-
-        #btdelete {
-
+        .btsupprimer{
             float: inline-end;
-            border: none;
+           cursor: pointer;
+           border: none;
 
             padding: 10px 20px;
-            cursor: pointer;
         }
 
         /*  qd on met le curseur sur la croix*/
-        #btdelete:hover {
+        .btsupprimer:hover {
             background-color: red;
 
         }
@@ -35,11 +29,12 @@
 
 
         header {
+            position: relative;
             color: silver;
             text-align: center;
             border: solid;
             background-color: red;
-            width: 100%;
+
             height: 150px;
 
 
@@ -47,21 +42,16 @@
 
         #champTxt {
 
-            width: 70%;
-            padding: 10px;
-            margin-left: auto;
-            margin-right: auto;
-            float: left;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            font-size: medium;
+            width: 60%;
+
         }
 
         ul li {
-            position: relative;
-            border: none;
-            list-style-type: none;
+            display: block;
+            position: static;
             padding: 8px 3px 20px;
             cursor: pointer;
+
         }
 
 
@@ -75,6 +65,7 @@
         ul li.checked {
             background-color: yellowgreen;
             text-decoration: line-through;
+            list-style-image: ✅;
         }
 
         ul li.verifie {
@@ -82,6 +73,18 @@
             text-decoration: line-through;
 
         }
+
+        .position {
+            position: relative;
+            display: inline;
+            background-color: white;
+            /* pour la hauteur des 2 boutons */
+            padding: 10px;
+
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: medium;
+        }
+      
     </style>
 </head>
 
@@ -91,9 +94,9 @@
     <div>
 
 
-        <input type="text" id="champTxt" placeholder="Entrez une tache ...">
+        <input class="position" type="text" id="champTxt" placeholder="Entrez une tache ...">
 
-        <button id="btAdd"> Ajouter</button> <br>
+        <button class="position" type="submit" id="btAdd"> Ajouter</button> <br>
 
     </div>
 
@@ -104,9 +107,9 @@
 <body>
     <table>
         <ul id="todolist">
-            <li>ApprendreHTML <button id="btdelete">x</button></li>
-            <li>Pratiquer CSS<button id="btdelete">x</button></li>
-            <li>Programmer avec js<button id="btdelete">x</button></li>
+            <li>ApprendreHTML <button class ='btsupprimer' onclick='fsupprimer'> x </button></li>
+            <li>Pratiquer CSS <button class ='btsupprimer' onclick='fsupprimer'> x </button></li>
+            <li>Programmer avec js<button class ='btsupprimer' onclick='fsupprimer'> x </button></li>
 
         </ul>
     </table>
@@ -115,33 +118,54 @@
         var btAdd = document.getElementById("btAdd");
         var todoList = document.getElementById("todolist");
 
-        btAdd.addEventListener("click", function () { // qd on clique sur le bouton, la fct est appelé
+
+        /**
+         * ajoute le champ de saisie entré et le bouton avec la croix a la liste quand on clique sur un bouton ajouter
+         * retourne cette liste a l affichage
+         * */
+        btAdd.addEventListener("click", function () { // fct appelé au clic 
             var champTxt = document.getElementById("champTxt").value;
-            var nouvelleLigne = document.createElement("li"); // crée une nouvelle lg
-            nouvelleLigne.textContent = champTxt; //cree le contenu du champ saisi 
+            // crée une nouvelle ligne  ds la liste
+            var nouvelelement = document.createElement("li"); 
+        
+            //cree le contenu du champ saisi ds la ligne
 
-
-            todoList.appendChild(nouvelleLigne); // ajoute l element a la fin de la liste li  
-            document.getElementById("champTxt").value = "";
+            nouvelelement.innerHTML =champTxt+"<button class ='btsupprimer' onclick='fsupprimer'> x </button>";
+           // ajoute l element a la fin de la liste li  
+            todoList.appendChild(nouvelelement); 
+            
         });
 
-        // qd on clique sur un élément de la liste, fct est appelée
+        
 
+/**
+ * ajoute une classe css pour un element sélectionnée dans la liste
+ * */
         todolist.addEventListener("click", function (e) {
             if (e.target && e.target.nodeName == "LI") { //on vérifie que l' élément cliqué est un li 
                 e.target.classList.toggle("verifie");
             }
         });
 
-        var btdelete = document.getElementById("btdelete");
+    
+       
 
-        btdelete.addEventListener("click", function () {
-            var selection = document.createElement("li");
-
-
-        }
-
-        );
+        /**
+         * supprime un element de la liste quand on clique sur la croix
+         * todo ne marche pas
+         * */
+        function fsupprimer(bouton){
+        var btelement = bouton.parentNode;
+        //supprimer l element parent du bouton element x 
+          btelement.parentNode.removeChild(btelement);
+             
+         };
+         var boutonsSupprimer = document.getElementsByClassName("supprimer");
+   for (var i = 0; i < boutonsSupprimer.length; i++) {
+    boutonsSupprimer[i].addEventListener("click", function() {
+      fsupprimer(this);
+    });
+  };
     </script>
 </body>
 
